@@ -62,8 +62,9 @@ pipeline {
             }
         }
         
-        stage('Publish Report') {
-        sh "mkdir -p target"
+        stage ('Publish Report') {
+            steps {   
+        sh 'mkdir -p report'
         writeFile file: "target/integration-result.html",
                   text: buildHtmlReport(stageDefs)
         publishHTML([
@@ -74,6 +75,6 @@ pipeline {
                 reportFiles          : 'integration-result.html',
                 reportName           : 'Integration result'])
     }
-        
+        } 
     }
 }
