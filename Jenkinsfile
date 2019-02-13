@@ -4,18 +4,15 @@ pipeline {
         maven 'mvn' 
         jdk 'java' 
     }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
-        }
+   
 
         stage ('CheckOut') {
             steps {
+                 sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+                
                git 'https://github.com/jampani80/webApp.git'
                
             }
