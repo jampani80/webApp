@@ -5,7 +5,7 @@ pipeline {
         jdk 'java' 
     }
    
-
+    stages{
         stage ('CheckOut') {
             steps {
                  sh '''
