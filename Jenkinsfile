@@ -62,19 +62,6 @@ pipeline {
             }
         }
         
-        stage ('Publish Report') {
-            steps {   
-        sh 'mkdir -p report'
-        writeFile file: "target/integration-result.html",
-                  text: buildHtmlReport(stageDefs)
-        publishHTML([
-                allowMissing         : false,
-                alwaysLinkToLastBuild: true,
-                keepAll              : true,
-                reportDir            : 'target',
-                reportFiles          : 'integration-result.html',
-                reportName           : 'Integration result'])
-    }
-        } 
+
     }
 }
