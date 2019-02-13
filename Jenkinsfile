@@ -31,16 +31,8 @@ pipeline {
                
             }
         }
-         stage ('Unit Test') {
-            steps {
-                
-                echo "Running Unit test cases"
-                sh 'mvn test'
-               
-                
-            }
-        }
         
+         
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
@@ -68,9 +60,18 @@ pipeline {
                             junit "**/TEST-*.xml"
                         }
                     }
-                }
+                }-
             }
+        }
         
+         stage ('Unit Test') {
+            steps {
+                
+                echo "Running Unit test cases"
+                sh 'mvn test'
+                
+            }
+        }
         stage ('Code Scan') {
             steps {
                 
