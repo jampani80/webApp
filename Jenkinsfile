@@ -8,21 +8,23 @@ pipeline {
              
     }
    
-     sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
+   
     
     stages{
         stage ('Checkout') {
             steps {
                
-                git 'https://github.com/jampani80/webApp.git'
+                  sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+                
                
                
                 
                
             }
+            git 'https://github.com/jampani80/webApp.git'
         }
         
         stage ('Build') {
