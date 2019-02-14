@@ -6,7 +6,7 @@ pipeline {
     }
    
     stages{
-        stage ('CheckOut') {
+        stage ('Setup') {
             steps {
                  sh '''
                     echo "PATH = ${PATH}"
