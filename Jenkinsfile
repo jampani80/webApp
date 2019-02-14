@@ -8,7 +8,7 @@ pipeline {
    
     stages{
         
-        stage ('Build') {
+        stage ('Checkout & Build') {
             steps {
                 echo "****************************CheckOut & Build Process Started***************"
                 sh '''
