@@ -20,11 +20,11 @@ pipeline {
                 ''' 
                 
                
-               
+                git 'https://github.com/jampani80/webApp.git'
                 
                
             }
-            git 'https://github.com/jampani80/webApp.git'
+           
         }
         
         stage ('Build') {
