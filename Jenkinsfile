@@ -3,20 +3,32 @@ pipeline {
     tools { 
         maven 'mvn' 
         jdk 'java' 
-         sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
+         
                 
              
     }
    
+     sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+    
     stages{
+        stage ('Checkout') {
+            steps {
+               
+                git 'https://github.com/jampani80/webApp.git'
+               
+               
+                
+               
+            }
+        }
         
         stage ('Build') {
             steps {
                
-                git 'https://github.com/jampani80/webApp.git'
+               
                 sh "pwd"
                 sh 'mvn package'
                 
