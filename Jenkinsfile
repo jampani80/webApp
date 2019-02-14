@@ -10,22 +10,24 @@ pipeline {
         
         stage ('Build') {
             steps {
+                echo "****************************CheckOut & Build Process Started***************"
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
                  git 'https://github.com/jampani80/webApp.git'
-                
+                echo "****************************CheckOut Completed and Build started***************"
                 sh "pwd"
                 sh 'mvn package'
+                 echo "****************************Build Completed***************"
             }
         }
          stage ('Unit Test') {
             steps {
                 
-                echo "Running Unit test cases"
+                echo "****************Running Unit test cases*************"
                 sh 'mvn test'
-                
+                 echo "****************Completed Unit test cases*************"
             }
         }
         stage ('Code Scan') {
@@ -38,7 +40,7 @@ pipeline {
         }
          stage ('Staging') {
             steps {
-                
+                 echo "*************Staging deployable artifacts****************************"
                 sh 'cp /var/lib/jenkins/workspace/poc2/target/webApp.war /tmp/'
                
                 
@@ -46,7 +48,7 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-                echo 'Deploying to DEV Server.'
+                echo '******************Deploying to DEV Server.*******************'
                 sh 'cp /tmp/webApp.war /usr/share/tomcat/webapps'
                
                 
