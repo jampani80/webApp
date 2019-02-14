@@ -22,6 +22,7 @@ pipeline {
                  echo "****************************Build Completed***************"
             }
         }
+        parallel {
          stage ('Unit Test') {
             steps {
                 
@@ -37,6 +38,7 @@ pipeline {
                
                 
             }
+        }
         }
          stage ('Staging') {
             steps {
